@@ -4,71 +4,120 @@
       "id": "1",
       "title": "Smart Plant Care System",
       "description": "An IoT device that monitors soil moisture, light levels, and temperature to help users take better care of their plants with automated watering",
-      "tags": ["IoT", "Hardware", "Sustainability", "Home"],
+      "tags": [
+        "Technology",
+        "Sustainability",
+        "Home"
+      ],
       "createdAt": "2025-09-15T10:30:00Z"
     },
     {
       "id": "2",
       "title": "Local Artisan Marketplace",
       "description": "Platform connecting local artists and craftspeople with customers in their area, focusing on handmade and sustainable products",
-      "tags": ["E-commerce", "Local", "Handmade", "Community"],
+      "tags": [
+        "E-commerce",
+        "Community",
+        "Creative"
+      ],
       "createdAt": "2025-09-20T14:22:00Z"
     },
     {
       "id": "3",
       "title": "Meal Prep Subscription Box",
       "description": "Weekly delivery of pre-portioned ingredients with recipe cards for healthy, easy-to-cook meals tailored to dietary preferences",
-      "tags": ["Food", "Subscription", "Health", "Convenience"],
+      "tags": [
+        "Food & Beverage",
+        "Services",
+        "Health & Fitness"
+      ],
       "createdAt": "2025-09-22T09:15:00Z"
     },
     {
       "id": "4",
       "title": "Pet Sitting Network",
       "description": "Mobile app that connects pet owners with vetted, local pet sitters for daily walks, overnight stays, and pet care services",
-      "tags": ["Pets", "Service", "Mobile", "Community"],
+      "tags": [
+        "Technology",
+        "Services",
+        "Community"
+      ],
       "createdAt": "2025-09-25T16:45:00Z"
     },
     {
       "id": "5",
       "title": "Sustainable Fashion Rental",
       "description": "Online service for renting designer and high-quality clothing for special events, promoting sustainable fashion consumption",
-      "tags": ["Fashion", "Rental", "Sustainability", "E-commerce"],
+      "tags": [
+        "Creative",
+        "Services",
+        "Sustainability",
+        "E-commerce"
+      ],
       "createdAt": "2025-09-28T11:00:00Z"
     },
     {
       "id": "6",
       "title": "Virtual Fitness Classes",
       "description": "Live-streamed and on-demand fitness classes with personalized workout plans and progress tracking for home exercise",
-      "tags": ["Fitness", "Streaming", "Health", "Subscription"],
+      "tags": [
+        "Health & Fitness",
+        "Technology",
+        "Services"
+      ],
       "createdAt": "2025-09-29T08:30:00Z"
     },
     {
       "id": "7",
       "title": "Zero-Waste Grocery Store",
       "description": "Bulk food store where customers bring their own containers, eliminating single-use packaging and reducing food waste",
-      "tags": ["Sustainability", "Retail", "Food", "Environment"],
+      "tags": [
+        "Sustainability",
+        "Food & Beverage"
+      ],
       "createdAt": "2025-09-29T13:20:00Z"
     },
     {
       "id": "8",
       "title": "Language Learning Café",
       "description": "Physical café space offering coffee and snacks while hosting language exchange meetups and conversation practice sessions",
-      "tags": ["Education", "Community", "Café", "Social"],
+      "tags": [
+        "Education",
+        "Community",
+        "Food & Beverage"
+      ],
       "createdAt": "2025-09-29T17:10:00Z"
     },
     {
       "id": "9",
       "title": "Smart Home Energy Monitor",
       "description": "Device and app that tracks household energy consumption in real-time, providing insights and recommendations to reduce bills",
-      "tags": ["IoT", "Energy", "Home", "Sustainability"],
+      "tags": [
+        "Technology",
+        "Sustainability",
+        "Home"
+      ],
       "createdAt": "2025-09-30T07:45:00Z"
     },
     {
       "id": "10",
       "title": "Custom Gift Box Service",
       "description": "Curated gift boxes with personalized items based on recipient interests, occasions, and preferences with same-day local delivery",
-      "tags": ["Gifts", "E-commerce", "Personalization", "Delivery"],
+      "tags": [
+        "Creative",
+        "E-commerce",
+        "Services"
+      ],
       "createdAt": "2025-09-30T12:00:00Z"
+    },
+    {
+      "id": "5f41",
+      "title": "test",
+      "description": "fdsf",
+      "tags": [
+        "d"
+      ],
+      "createdAt": "2025-09-30T21:01:07.779Z"
     }
   ]
 }

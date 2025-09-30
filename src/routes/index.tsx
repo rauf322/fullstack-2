@@ -1,39 +1,64 @@
-import { createFileRoute } from '@tanstack/react-router'
-import logo from '../logo.svg'
+import { useSuspenseQuery } from '@tanstack/react-query'
+import { Link, createFileRoute } from '@tanstack/react-router'
+import type { Idea } from '@/types'
+import { useQueryOptions } from '@/api/useQueryHelper'
+import IdeaCard from '@/components/IdeaCard'
 
 export const Route = createFileRoute('/')({
-  component: App,
+  component: HomePage,
+  loader: async ({ context: { queryClient } }) => {
+    return queryClient.ensureQueryData(useQueryOptions())
+  },
 })
 
-function App() {
+function HomePage() {
+  const { data: threeIdeas } = useSuspenseQuery(useQueryOptions())
   return (
-    <div className="text-center">
-      <header className="min-h-screen flex flex-col items-center justify-center bg-[#282c34] text-white text-[calc(10px+2vmin)]">
-        <img
-          src={logo}
-          className="h-[40vmin] pointer-events-none animate-[spin_20s_linear_infinite]"
-          alt="logo"
-        />
-        <p>
-          Edit <code>src/routes/index.tsx</code> and save to reload.
-        </p>
-        <a
-          className="text-[#61dafb] hover:underline"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <a
-          className="text-[#61dafb] hover:underline"
-          href="https://tanstack.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn TanStack
-        </a>
-      </header>
+    <div className='min-h-screen bg-stone-950'>
+      <div className='max-w-7xl mx-auto px-6 py-20'>
+        <div className='text-center'>
+          <h1 className='text-6xl font-bold text-white mb-6'>
+            Welcome to Shop Ideas
+          </h1>
+          <p className='text-xl text-stone-400 mb-12 max-w-2xl mx-auto'>
+            Discover, create, and share innovative shop ideas. Transform your
+            entrepreneurial vision into reality.
+          </p>
+          <div className='flex gap-4 justify-center'>
+            <Link
+              to='/ideas'
+              className='bg-amber-700 hover:bg-amber-800 text-white font-semibold px-8 py-3 rounded-lg transition-colors'
+            >
+              Browse Ideas
+            </Link>
+            <button className='bg-stone-800 hover:bg-stone-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors border border-stone-700'>
+              Get Started
+            </button>
+          </div>
+        </div>
+
+        <div className='mt-20'>
+          <div className='flex items-center justify-between mb-8'>
+            <h2 className='text-3xl font-bold text-white'>Latest Ideas</h2>
+            <Link
+              to='/ideas'
+              className='text-amber-500 hover:text-amber-400 font-medium transition-colors'
+            >
+              View All →
+            </Link>
+          </div>
+          <div className='grid gap-6 md:grid-cols-3'>
+            {threeIdeas
+              .sort((a: Idea, b: Idea) =>
+                b.createdAt.localeCompare(a.createdAt),
+              )
+              .slice(0, 3)
+              .map((idea) => (
+                <IdeaCard idea={idea} />
+              ))}
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

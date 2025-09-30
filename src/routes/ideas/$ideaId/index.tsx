@@ -1,20 +1,27 @@
 import { createFileRoute } from '@tanstack/react-router'
-import type { Idea } from '@/types/types'
+import { queryOptions, useSuspenseQuery } from '@tanstack/react-query'
 import { fetchIdea } from '@/api/jsonFetch'
+import IdeaCardDesc from '@/components/IdeaCardDesc'
+
+const ideaQueryOptions = (ideaId: string) =>
+  queryOptions({
+    queryKey: ['idea', ideaId],
+    queryFn: () => fetchIdea(ideaId),
+  })
 
 export const Route = createFileRoute('/ideas/$ideaId/')({
   component: IdeaDetails,
-  loader: async ({
-    params,
-  }: {
-    params: Record<string, string>
-  }): Promise<Idea> => {
-    return fetchIdea(params.ideaId)
+  loader: async ({ params, context: { queryClient } }) => {
+    return queryClient.ensureQueryData(ideaQueryOptions(params.ideaId))
   },
 })
 
 function IdeaDetails() {
-  const idea = Route.useLoaderData()
-  console.log(idea)
-  return <div className='bg-white min-h-screen'>Hello {idea.title}</div>
+  const { ideaId } = Route.useParams()
+  const { data: idea } = useSuspenseQuery(ideaQueryOptions(ideaId))
+  return (
+    <div className="bg-stone-950 min-h-screen p-8">
+      <IdeaCardDesc idea={idea} />
+    </div>
+  )
 }
