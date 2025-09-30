@@ -20,3 +20,7 @@ export async function postIdea(
   })
   return res.data
 }
+
+export async function postDelete(postId: number): Promise<void> {
+  await api.delete(`/ideas/${postId}`)
+}
