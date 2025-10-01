@@ -38,6 +38,7 @@ declare module '@tanstack/react-router' {
 const rootElement = document.getElementById('app')
 if (rootElement && !rootElement.innerHTML) {
   const root = ReactDOM.createRoot(rootElement)
+  window.__TANSTACK_QUERY_CLIENT__ = queryClient
   root.render(
     <QueryClientProvider client={queryClient}>
       <StrictMode>
