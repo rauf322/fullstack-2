@@ -25,9 +25,7 @@ export async function postDelete(postId: number): Promise<void> {
   await api.delete(`/ideas/${postId}`)
 }
 
-export async function postUpdate(
-  updatedData: Omit<Idea, 'createdAt'>,
-): Promise<Idea> {
+export async function postUpdate(updatedData: Idea): Promise<Idea> {
   const res = await api.put(`ideas/${updatedData.id}`, updatedData)
   return res.data
 }

@@ -38,7 +38,7 @@ function HomePage() {
             </Link>
           </div>
         </div>
-        {threeIdeas.length > 1 && (
+        {threeIdeas.length > 0 && (
           <div className='mt-20'>
             <div className='flex items-center justify-between mb-8'>
               <h2 className='text-3xl font-bold text-white'>Latest Ideas</h2>

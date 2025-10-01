@@ -14,7 +14,6 @@ export const Route = createFileRoute('/ideas/')({
 })
 
 function Ideas() {
-  const queryClient = useQueryClient()
   const { data: ideas } = useSuspenseQuery(useQueryIdeas())
   const [filter, setFilter] = useState('All Categories')
   const filteredIdeas: Array<Idea> = ideas.filter((idea: Idea) => {
@@ -32,13 +31,7 @@ function Ideas() {
           {filteredIdeas
             .sort((a: Idea, b: Idea) => b.createdAt.localeCompare(a.createdAt))
             .map((idea) => (
-              <IdeaCard
-                key={idea.id}
-                idea={idea}
-                onDeleteSuccess={() =>
-                  queryClient.invalidateQueries({ queryKey: ['ideas'] })
-                }
-              />
+              <IdeaCard key={idea.id} idea={idea} />
             ))}
         </div>
       </div>
