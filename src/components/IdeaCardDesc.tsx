@@ -1,7 +1,25 @@
+import { postDelete } from '@/api/jsonFetch'
 import type { Idea } from '@/types'
-import { Link } from '@tanstack/react-router'
+import { useMutation } from '@tanstack/react-query'
+import { Link, useNavigate } from '@tanstack/react-router'
 
 const IdeaCardDesc = ({ idea }: { idea: Idea }) => {
+  const navigate = useNavigate()
+  const { mutateAsync } = useMutation({
+    mutationFn: postDelete,
+    onSuccess: () => {
+      navigate({ to: '/ideas', replace: true })
+    },
+  })
+
+  async function handleDelete(id: number) {
+    try {
+      await mutateAsync(id)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <div className='max-w-4xl mx-auto'>
       <div className='bg-stone-800 rounded-lg shadow-md p-6 border border-stone-700'>
@@ -48,14 +66,25 @@ const IdeaCardDesc = ({ idea }: { idea: Idea }) => {
             </div>
           </div>
         </div>
+        <div className='flex gap-3 mt-6'>
+          <Link
+            to='/ideas/$ideaId/edit'
+            params={{ ideaId: idea.id.toString() }}
+            className='bg-amber-600 hover:bg-amber-700 text-white font-semibold px-6 py-2 rounded transition-colors duration-200'
+          >
+            Edit Idea
+          </Link>
+          <button
+            onClick={(e) => {
+              e.stopPropagation()
+              handleDelete(idea.id)
+            }}
+            className='bg-red-600 hover:bg-red-700 text-white font-semibold px-6 py-2 rounded transition-colors duration-200'
+          >
+            Delete
+          </button>
+        </div>
       </div>
-      <Link
-        to='/ideas/$ideaId/edit'
-        params={{ ideaId: idea.id.toString() }}
-        className='inline-block mt-4 bg-amber-600 hover:bg-amber-700 text-white font-semibold px-6 py-2 rounded transition-colors duration-200'
-      >
-        Edit Idea
-      </Link>
     </div>
   )
 }

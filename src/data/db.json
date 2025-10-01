@@ -1,32 +1,36 @@
 {
   "ideas": [
     {
+      "id": "23",
+      "title": "Smart Home Gadgets",
+      "tags": [
+        "Technology",
+        "Smart Home",
+        "IoT"
+      ],
+      "description": "Tech store for affordable smart home devices and IoT products. Target budget-conscious consumers looking to automate their homes. HOme"
+    },
+    {
       "id": "2",
       "title": "Smart Home Gadgets",
       "description": "Tech store for affordable smart home devices and IoT products. Target budget-conscious consumers looking to automate their homes.",
-      "tags": ["Technology", "Smart Home", "IoT"],
+      "tags": [
+        "Technology",
+        "Smart Home",
+        "IoT"
+      ],
       "createdAt": "2024-02-20T14:45:00Z"
     },
     {
       "id": "3",
       "title": "Artisan Coffee Subscription",
       "description": "Monthly subscription box featuring small-batch roasted coffee from local roasters. Include brewing guides and tasting notes.",
-      "tags": ["Food & Beverage", "Subscription", "Coffee"],
+      "tags": [
+        "Food & Beverage",
+        "Subscription",
+        "Coffee"
+      ],
       "createdAt": "2024-03-10T09:15:00Z"
-    },
-    {
-      "id": "4",
-      "title": "Handmade Pet Accessories",
-      "description": "Custom pet collars, beds, and toys made from eco-friendly materials. Personalization options for pet owners.",
-      "tags": ["Pets", "Handmade", "Eco-friendly"],
-      "createdAt": "2024-03-25T16:20:00Z"
-    },
-    {
-      "id": "5",
-      "title": "Minimalist Stationery Store",
-      "description": "Clean, simple designs for planners, notebooks, and desk accessories. Target productivity enthusiasts and bullet journalers.",
-      "tags": ["Stationery", "Minimalist", "Productivity"],
-      "createdAt": "2024-04-05T11:00:00Z"
     }
   ]
 }

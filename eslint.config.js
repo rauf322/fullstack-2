@@ -7,6 +7,8 @@ export default [
   {
     rules: {
       'import/order': 'off',
+      '@typescript-eslint/consistent-type-imports': 'off',
+      'sort-imports': 'off',
     },
   },
 ]

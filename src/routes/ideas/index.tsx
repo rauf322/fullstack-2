@@ -3,21 +3,21 @@ import { createFileRoute } from '@tanstack/react-router'
 import { useState } from 'react'
 import type { Idea } from '@/types'
 import IdeaCard from '@/components/IdeaCard'
-import { useQueryOptions } from '@/lib/useQueryHelper'
+import { useQueryIdeas } from '@/api/useQueryHelper'
 import Filter from '@/components/Filter'
 
 export const Route = createFileRoute('/ideas/')({
   component: Ideas,
   loader: async ({ context: { queryClient } }) => {
-    return queryClient.ensureQueryData(useQueryOptions())
+    return queryClient.ensureQueryData(useQueryIdeas())
   },
 })
 
 function Ideas() {
   const queryClient = useQueryClient()
-  const { data: ideas } = useSuspenseQuery(useQueryOptions())
+  const { data: ideas } = useSuspenseQuery(useQueryIdeas())
   const [filter, setFilter] = useState('All Categories')
-  const filteredIdeas: Array<Idea> = ideas.filter((idea) => {
+  const filteredIdeas: Array<Idea> = ideas.filter((idea: Idea) => {
     if (filter === 'All Categories' || idea.tags.includes(filter)) {
       return idea
     }

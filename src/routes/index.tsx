@@ -1,18 +1,18 @@
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { Link, createFileRoute } from '@tanstack/react-router'
 import type { Idea } from '@/types'
-import { useQueryOptions } from '@/lib/useQueryHelper'
+import { useQueryIdeas } from '@/api/useQueryHelper'
 import IdeaCard from '@/components/IdeaCard'
 
 export const Route = createFileRoute('/')({
   component: HomePage,
   loader: async ({ context: { queryClient } }) => {
-    return queryClient.ensureQueryData(useQueryOptions())
+    return queryClient.ensureQueryData(useQueryIdeas())
   },
 })
 
 function HomePage() {
-  const { data: threeIdeas } = useSuspenseQuery(useQueryOptions())
+  const { data: threeIdeas } = useSuspenseQuery(useQueryIdeas())
   return (
     <div className='min-h-screen bg-stone-950'>
       <div className='max-w-7xl mx-auto px-6 py-20'>
