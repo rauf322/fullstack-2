@@ -3,14 +3,22 @@
     {
       "id": "23",
       "title": "Smart Home Gadgets",
-      "tags": ["Technology", "Smart Home", "IoT"],
+      "tags": [
+        "Technology",
+        "Smart Home",
+        "IoT"
+      ],
       "description": "Tech store for affordable smart home devices and IoT products. Target budget-conscious consumers looking to automate their homes. HOme",
       "createdAt": "2024-03-10T09:15:00Z"
     },
     {
       "id": "2",
       "title": "Smart Home Gadgets",
-      "tags": ["Technology", "Smart Home", "IoT"],
+      "tags": [
+        "Technology",
+        "Smart Home",
+        "IoT"
+      ],
       "description": "Tech store for affordable smart home devices and IoT products. Target budget-conscious consumers looking to automate their homes.",
       "createdAt": "2024-03-10T09:15:00Z"
     },
@@ -18,9 +26,12 @@
       "id": "3",
       "title": "Artisan Coffee Subscription",
       "description": "Monthly subscription box featuring small-batch roasted coffee from local roasters. Include brewing guides and tasting notes.",
-      "tags": ["Food & Beverage", "Subscription", "Coffee"],
+      "tags": [
+        "Food & Beverage",
+        "Subscription",
+        "Coffee"
+      ],
       "createdAt": "2024-03-10T09:15:00Z"
     }
   ]
 }
-

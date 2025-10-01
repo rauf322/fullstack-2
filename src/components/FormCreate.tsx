@@ -49,6 +49,11 @@ const FormCreate = () => {
         })
       } catch (error) {
         console.log(error)
+      } finally {
+        localStorage.setItem('title', '')
+        localStorage.setItem('description', '')
+        localStorage.setItem('tags', JSON.stringify([]))
+        toast.message('Post was created!')
       }
     } else {
       toast.message('Please fill all the fields')

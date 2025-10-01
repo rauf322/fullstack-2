@@ -23,6 +23,7 @@ const IdeaCard = ({ idea }: IdeaCardProps) => {
       console.log(error)
     }
   }
+
   return (
     <div className='relative bg-stone-800 rounded-lg shadow-md hover:shadow-xl transition-all duration-200 border border-stone-700 group'>
       <Link
