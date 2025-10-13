@@ -1,4 +1,4 @@
-import { postUpdate } from '@/api/jsonFetch'
+import { putIdeas } from '@/api/jsonFetch'
 import type { Idea } from '@/types'
 import { useMutation } from '@tanstack/react-query'
 import { useNavigate } from '@tanstack/react-router'
@@ -10,7 +10,7 @@ const FormCreate = ({ idea }: { idea: Idea }) => {
   const [title, setTitle] = useState(() => idea.title)
 
   const { mutateAsync } = useMutation({
-    mutationFn: postUpdate,
+    mutationFn: putIdeas,
     onSuccess: () => {
       navigate({ to: '/ideas', replace: true })
     },
