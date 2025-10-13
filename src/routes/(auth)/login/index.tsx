@@ -40,6 +40,12 @@ function LoginPage() {
       setTimeout(() => setError(null), 5000)
       return
     }
+    if (password.length < 6) {
+      const errorMsg = 'Password must be at least 6 characters long'
+      setError(errorMsg)
+      setTimeout(() => setError(null), 5000)
+      return
+    }
     try {
       await mutateAsync({
         email: email,
