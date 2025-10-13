@@ -1,10 +1,10 @@
 import { fetchIdea, fetchIdeas } from '@/api/jsonFetch'
 import { queryOptions } from '@tanstack/react-query'
 
-export const useQueryIdeas = () =>
+export const useQueryIdeas = (_limit?: number) =>
   queryOptions({
-    queryKey: ['ideas'],
-    queryFn: () => fetchIdeas(),
+    queryKey: ['ideas', { limit: _limit }],
+    queryFn: () => fetchIdeas(_limit),
   })
 
 export const useQueryIdea = (id: string) =>

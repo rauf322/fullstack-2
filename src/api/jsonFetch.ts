@@ -6,8 +6,10 @@ export async function fetchIdea(ideaId: string): Promise<Idea> {
   return res.data
 }
 
-export async function fetchIdeas(): Promise<Array<Idea>> {
-  const res = await api.get(`/ideas`)
+export async function fetchIdeas(_limit?: number): Promise<Array<Idea>> {
+  const res = await api.get(`/ideas`, {
+    params: _limit ? { _limit: _limit } : {},
+  })
   return res.data
 }
 

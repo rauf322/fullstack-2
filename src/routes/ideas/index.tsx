@@ -28,11 +28,9 @@ function Ideas() {
         <h1 className='text-4xl font-bold text-white mb-8'>Shop Ideas</h1>
         <Filter ideas={ideas} setFilter={setFilter} />
         <div className='grid gap-6 md:grid-cols-2 lg:grid-cols-3 mt-6'>
-          {filteredIdeas
-            .sort((a: Idea, b: Idea) => b.createdAt.localeCompare(a.createdAt))
-            .map((idea) => (
-              <IdeaCard key={idea._id} idea={idea} />
-            ))}
+          {filteredIdeas.map((idea) => (
+            <IdeaCard key={idea._id} idea={idea} />
+          ))}
         </div>
       </div>
     </div>

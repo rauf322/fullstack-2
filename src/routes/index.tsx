@@ -12,7 +12,7 @@ export const Route = createFileRoute('/')({
 })
 
 function HomePage() {
-  const { data: threeIdeas } = useSuspenseQuery(useQueryIdeas())
+  const { data: ideas } = useSuspenseQuery(useQueryIdeas(3))
   return (
     <div className='min-h-screen bg-stone-950'>
       <div className='max-w-7xl mx-auto px-6 py-20'>
@@ -38,7 +38,7 @@ function HomePage() {
             </Link>
           </div>
         </div>
-        {threeIdeas.length > 0 && (
+        {ideas.length > 0 && (
           <div className='mt-20'>
             <div className='flex items-center justify-between mb-8'>
               <h2 className='text-3xl font-bold text-white'>Latest Ideas</h2>
@@ -50,14 +50,9 @@ function HomePage() {
               </Link>
             </div>
             <div className='grid gap-6 md:grid-cols-3'>
-              {threeIdeas
-                .sort((a: Idea, b: Idea) =>
-                  b.createdAt.localeCompare(a.createdAt),
-                )
-                .slice(0, 3)
-                .map((idea: Idea) => (
-                  <IdeaCard idea={idea} />
-                ))}
+              {ideas.map((idea: Idea) => (
+                <IdeaCard idea={idea} />
+              ))}
             </div>
           </div>
         )}
