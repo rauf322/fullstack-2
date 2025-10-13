@@ -6,13 +6,13 @@ import { useQueryIdea } from '@/api/useQueryHelper'
 export const Route = createFileRoute('/ideas/$ideaId/')({
   component: IdeaDetails,
   loader: async ({ params, context: { queryClient } }) => {
-    return queryClient.ensureQueryData(useQueryIdea(Number(params.ideaId)))
+    return queryClient.ensureQueryData(useQueryIdea(params.ideaId))
   },
 })
 
 function IdeaDetails() {
   const { ideaId } = Route.useParams()
-  const { data: idea } = useSuspenseQuery(useQueryIdea(Number(ideaId)))
+  const { data: idea } = useSuspenseQuery(useQueryIdea(ideaId))
   return (
     <div className='bg-stone-950 min-h-screen p-8'>
       <IdeaCardDesc idea={idea} />

@@ -1,7 +1,7 @@
 import type { Idea } from '@/types'
 import api from '@/lib/axios'
 
-export async function fetchIdea(ideaId: number): Promise<Idea> {
+export async function fetchIdea(ideaId: string): Promise<Idea> {
   const res = await api.get(`ideas/${ideaId}`)
   return res.data
 }
@@ -21,11 +21,11 @@ export async function postIdea(
   return res.data
 }
 
-export async function postDelete(postId: number): Promise<void> {
+export async function postDelete(postId: string): Promise<void> {
   await api.delete(`/ideas/${postId}`)
 }
 
 export async function postUpdate(updatedData: Idea): Promise<Idea> {
-  const res = await api.put(`ideas/${updatedData.id}`, updatedData)
+  const res = await api.put(`ideas/${updatedData._id}`, updatedData)
   return res.data
 }

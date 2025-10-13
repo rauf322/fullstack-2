@@ -7,7 +7,7 @@ export const useQueryIdeas = () =>
     queryFn: () => fetchIdeas(),
   })
 
-export const useQueryIdea = (id: number) =>
+export const useQueryIdea = (id: string) =>
   queryOptions({
     queryKey: ['ideas', id],
     queryFn: () => fetchIdea(id),

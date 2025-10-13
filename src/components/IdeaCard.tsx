@@ -16,7 +16,7 @@ const IdeaCard = ({ idea }: IdeaCardProps) => {
     },
   })
 
-  async function handleDelete(id: number) {
+  async function handleDelete(id: string) {
     try {
       await mutateAsync(id)
     } catch (error) {
@@ -25,32 +25,32 @@ const IdeaCard = ({ idea }: IdeaCardProps) => {
   }
 
   return (
-    <div className="relative bg-stone-800 rounded-lg shadow-md hover:shadow-xl transition-all duration-200 border border-stone-700 group">
+    <div className='relative bg-stone-800 rounded-lg shadow-md hover:shadow-xl transition-all duration-200 border border-stone-700 group'>
       <Link
-        to="/ideas/$ideaId"
-        params={{ ideaId: idea.id.toString() }}
-        className="block p-6 hover:bg-stone-750"
+        to='/ideas/$ideaId'
+        params={{ ideaId: idea._id }}
+        className='block p-6 hover:bg-stone-750'
       >
-        <h2 className="text-xl font-semibold text-white mb-3">{idea.title}</h2>
-        <p className="text-stone-400 text-sm mb-4 line-clamp-3">
+        <h2 className='text-xl font-semibold text-white mb-3'>{idea.title}</h2>
+        <p className='text-stone-400 text-sm mb-4 line-clamp-3'>
           {idea.description}
         </p>
-        <div className="flex flex-wrap gap-2 mb-4">
+        <div className='flex flex-wrap gap-2 mb-4'>
           {idea.tags.slice(0, 3).map((tag) => (
             <span
               key={tag}
-              className="bg-amber-900 text-amber-200 text-xs px-2 py-1 rounded-full"
+              className='bg-amber-900 text-amber-200 text-xs px-2 py-1 rounded-full'
             >
               {tag}
             </span>
           ))}
           {idea.tags.length > 3 && (
-            <span className="text-stone-500 text-xs px-2 py-1">
+            <span className='text-stone-500 text-xs px-2 py-1'>
               +{idea.tags.length - 3} more
             </span>
           )}
         </div>
-        <div className="flex justify-between items-center text-xs text-stone-500">
+        <div className='flex justify-between items-center text-xs text-stone-500'>
           <span>{new Date(idea.createdAt).toLocaleDateString()}</span>
         </div>
       </Link>
@@ -58,9 +58,9 @@ const IdeaCard = ({ idea }: IdeaCardProps) => {
         onClick={(e) => {
           e.preventDefault()
           e.stopPropagation()
-          handleDelete(idea.id)
+          handleDelete(idea._id)
         }}
-        className="absolute bottom-6 right-6 bg-red-800 hover:bg-red-900 text-white text-xs px-3 py-1.5 rounded transition-colors duration-200"
+        className='absolute bottom-6 right-6 bg-red-800 hover:bg-red-900 text-white text-xs px-3 py-1.5 rounded transition-colors duration-200'
       >
         Delete
       </button>

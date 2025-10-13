@@ -1,4 +1,4 @@
-import { useQueryClient, useSuspenseQuery } from '@tanstack/react-query'
+import { useSuspenseQuery } from '@tanstack/react-query'
 import { createFileRoute } from '@tanstack/react-router'
 import { useState } from 'react'
 import type { Idea } from '@/types'
@@ -21,7 +21,7 @@ function Ideas() {
       return idea
     }
   })
-
+  console.log(filteredIdeas)
   return (
     <div className='bg-stone-950 min-h-screen p-8'>
       <div className='max-w-6xl mx-auto'>
@@ -31,7 +31,7 @@ function Ideas() {
           {filteredIdeas
             .sort((a: Idea, b: Idea) => b.createdAt.localeCompare(a.createdAt))
             .map((idea) => (
-              <IdeaCard key={idea.id} idea={idea} />
+              <IdeaCard key={idea._id} idea={idea} />
             ))}
         </div>
       </div>

@@ -12,7 +12,7 @@ const IdeaCardDesc = ({ idea }: { idea: Idea }) => {
     },
   })
 
-  async function handleDelete(id: number) {
+  async function handleDelete(id: string) {
     try {
       await mutateAsync(id)
     } catch (error) {
@@ -52,7 +52,7 @@ const IdeaCardDesc = ({ idea }: { idea: Idea }) => {
           <div className='grid grid-cols-2 gap-4 text-sm'>
             <div>
               <span className='font-semibold text-stone-400'>ID:</span>
-              <span className='ml-2 text-stone-300'>{idea.id}</span>
+              <span className='ml-2 text-stone-300'>{idea._id}</span>
             </div>
             <div>
               <span className='font-semibold text-stone-400'>Created:</span>
@@ -69,7 +69,7 @@ const IdeaCardDesc = ({ idea }: { idea: Idea }) => {
         <div className='flex gap-3 mt-6'>
           <Link
             to='/ideas/$ideaId/edit'
-            params={{ ideaId: idea.id.toString() }}
+            params={{ ideaId: idea._id.toString() }}
             className='bg-amber-600 hover:bg-amber-700 text-white font-semibold px-6 py-2 rounded transition-colors duration-200'
           >
             Edit Idea
@@ -77,7 +77,7 @@ const IdeaCardDesc = ({ idea }: { idea: Idea }) => {
           <button
             onClick={(e) => {
               e.stopPropagation()
-              handleDelete(idea.id)
+              handleDelete(idea._id)
             }}
             className='bg-red-600 hover:bg-red-700 text-white font-semibold px-6 py-2 rounded transition-colors duration-200'
           >

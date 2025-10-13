@@ -6,13 +6,13 @@ import { createFileRoute } from '@tanstack/react-router'
 export const Route = createFileRoute('/ideas/$ideaId/edit/')({
   component: RouteComponent,
   loader: async ({ params, context: { queryClient } }) => {
-    return queryClient.ensureQueryData(useQueryIdea(Number(params.ideaId)))
+    return queryClient.ensureQueryData(useQueryIdea(params.ideaId))
   },
 })
 
 function RouteComponent() {
   const { ideaId } = Route.useParams()
-  const { data: idea } = useSuspenseQuery(useQueryIdea(Number(ideaId)))
+  const { data: idea } = useSuspenseQuery(useQueryIdea(ideaId))
   console.log(idea)
   return (
     <div className='bg-stone-950 min-h-screen p-8'>
@@ -20,7 +20,7 @@ function RouteComponent() {
         <h1 className='text-4xl font-bold text-white mb-8'>
           Edit existing Idea
         </h1>
-        <FormEdit idea={idea}/>
+        <FormEdit idea={idea} />
       </div>
     </div>
   )

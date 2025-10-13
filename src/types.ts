@@ -1,5 +1,5 @@
 export type Idea = {
-  id: number
+  _id: string
   title: string
   description: string
   tags: Array<string>
