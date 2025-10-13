@@ -14,6 +14,12 @@ export type UserCredentials = {
   name: string
 }
 
+export type User = {
+  email: string
+  name: string
+  password: string
+}
+
 export type AuthContextType = {
   accessToken: string | null
   setAccessToken: (token: string | null) => void

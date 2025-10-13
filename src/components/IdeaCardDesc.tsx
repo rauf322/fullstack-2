@@ -27,26 +27,28 @@ const IdeaCardDesc = ({
   }
 
   return (
-    <div className='max-w-4xl mx-auto'>
-      <div className='bg-stone-800 rounded-lg shadow-md p-6 border border-stone-700'>
-        <h1 className='text-3xl font-bold text-white mb-4'>{idea.title}</h1>
+    <div className="max-w-4xl mx-auto px-4">
+      <div className="bg-stone-800 rounded-lg shadow-md p-4 sm:p-6 border border-stone-700">
+        <h1 className="text-2xl sm:text-3xl font-bold text-white mb-4">
+          {idea.title}
+        </h1>
 
-        <div className='mb-6'>
-          <h2 className='text-sm font-semibold text-stone-400 uppercase mb-2'>
+        <div className="mb-6">
+          <h2 className="text-sm font-semibold text-stone-400 uppercase mb-2">
             Description
           </h2>
-          <p className='text-stone-300 leading-relaxed'>{idea.description}</p>
+          <p className="text-stone-300 leading-relaxed">{idea.description}</p>
         </div>
 
-        <div className='mb-6'>
-          <h2 className='text-sm font-semibold text-stone-400 uppercase mb-2'>
+        <div className="mb-6">
+          <h2 className="text-sm font-semibold text-stone-400 uppercase mb-2">
             Tags
           </h2>
-          <div className='flex flex-wrap gap-2'>
+          <div className="flex flex-wrap gap-2">
             {idea.tags.map((tag) => (
               <span
                 key={tag}
-                className='bg-amber-900 text-amber-200 text-sm px-3 py-1 rounded-full'
+                className="bg-amber-900 text-amber-200 text-sm px-3 py-1 rounded-full"
               >
                 {tag}
               </span>
@@ -54,15 +56,15 @@ const IdeaCardDesc = ({
           </div>
         </div>
 
-        <div className='border-t border-stone-700 pt-4 mt-4'>
-          <div className='grid grid-cols-2 gap-4 text-sm'>
+        <div className="border-t border-stone-700 pt-4 mt-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
             <div>
-              <span className='font-semibold text-stone-400'>ID:</span>
-              <span className='ml-2 text-stone-300'>{idea._id}</span>
+              <span className="font-semibold text-stone-400">ID:</span>
+              <span className="ml-2 text-stone-300 break-all">{idea._id}</span>
             </div>
             <div>
-              <span className='font-semibold text-stone-400'>Created:</span>
-              <span className='ml-2 text-stone-300'>
+              <span className="font-semibold text-stone-400">Created:</span>
+              <span className="ml-2 text-stone-300">
                 {new Date(idea.createdAt).toLocaleDateString('en-US', {
                   year: 'numeric',
                   month: 'long',
@@ -73,11 +75,11 @@ const IdeaCardDesc = ({
           </div>
         </div>
         {user && user.id === idea.user && (
-          <div className='flex gap-3 mt-6'>
+          <div className="flex flex-col sm:flex-row gap-3 mt-6">
             <Link
-              to='/ideas/$ideaId/edit'
+              to="/ideas/$ideaId/edit"
               params={{ ideaId: idea._id.toString() }}
-              className='bg-amber-600 hover:bg-amber-700 text-white font-semibold px-6 py-2 rounded transition-colors duration-200'
+              className="bg-amber-600 hover:bg-amber-700 text-white font-semibold px-6 py-2 rounded transition-colors duration-200 text-center"
             >
               Edit Idea
             </Link>
@@ -86,7 +88,7 @@ const IdeaCardDesc = ({
                 e.stopPropagation()
                 handleDelete(idea._id)
               }}
-              className='bg-red-600 hover:bg-red-700 text-white font-semibold px-6 py-2 rounded transition-colors duration-200'
+              className="bg-red-600 hover:bg-red-700 text-white font-semibold px-6 py-2 rounded transition-colors duration-200"
             >
               Delete
             </button>
