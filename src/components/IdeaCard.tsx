@@ -1,13 +1,14 @@
 import { Link } from '@tanstack/react-router'
-import type { Idea } from '@/types'
+import type { Idea, UserCredentials } from '@/types'
 import { postDelete } from '@/api/jsonFetch'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 
 type IdeaCardProps = {
   idea: Idea
+  user?: UserCredentials | null
 }
 
-const IdeaCard = ({ idea }: IdeaCardProps) => {
+const IdeaCard = ({ idea, user }: IdeaCardProps) => {
   const queryClient = useQueryClient()
   const { mutateAsync } = useMutation({
     mutationFn: postDelete,
@@ -54,16 +55,19 @@ const IdeaCard = ({ idea }: IdeaCardProps) => {
           <span>{new Date(idea.createdAt).toLocaleDateString()}</span>
         </div>
       </Link>
-      <button
-        onClick={(e) => {
-          e.preventDefault()
-          e.stopPropagation()
-          handleDelete(idea._id)
-        }}
-        className='absolute bottom-6 right-6 bg-red-800 hover:bg-red-900 text-white text-xs px-3 py-1.5 rounded transition-colors duration-200'
-      >
-        Delete
-      </button>
+
+      {user && user.id === idea.user && (
+        <button
+          onClick={(e) => {
+            e.preventDefault()
+            e.stopPropagation()
+            handleDelete(idea._id)
+          }}
+          className='absolute bottom-6 right-6 bg-red-800 hover:bg-red-900 text-white text-xs px-3 py-1.5 rounded transition-colors duration-200'
+        >
+          Delete
+        </button>
+      )}
     </div>
   )
 }

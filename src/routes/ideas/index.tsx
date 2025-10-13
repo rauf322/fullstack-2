@@ -5,6 +5,7 @@ import type { Idea } from '@/types'
 import IdeaCard from '@/components/IdeaCard'
 import { useQueryIdeas } from '@/api/useQueryHelper'
 import Filter from '@/components/Filter'
+import { useAuth } from '@/context/AuthContext'
 
 export const Route = createFileRoute('/ideas/')({
   component: Ideas,
@@ -16,12 +17,13 @@ export const Route = createFileRoute('/ideas/')({
 function Ideas() {
   const { data: ideas } = useSuspenseQuery(useQueryIdeas())
   const [filter, setFilter] = useState('All Categories')
+
+  const { user } = useAuth()
   const filteredIdeas: Array<Idea> = ideas.filter((idea: Idea) => {
     if (filter === 'All Categories' || idea.tags.includes(filter)) {
       return idea
     }
   })
-  console.log(filteredIdeas)
   return (
     <div className='bg-stone-950 min-h-screen p-8'>
       <div className='max-w-6xl mx-auto'>
@@ -29,7 +31,7 @@ function Ideas() {
         <Filter ideas={ideas} setFilter={setFilter} />
         <div className='grid gap-6 md:grid-cols-2 lg:grid-cols-3 mt-6'>
           {filteredIdeas.map((idea) => (
-            <IdeaCard key={idea._id} idea={idea} />
+            <IdeaCard key={idea._id} idea={idea} user={user} />
           ))}
         </div>
       </div>

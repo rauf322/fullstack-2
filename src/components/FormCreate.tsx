@@ -43,7 +43,6 @@ const FormCreate = () => {
     if (title && description && (tags.length > 1 || tags[0].length > 0)) {
       try {
         await mutateAsync({
-          _id: Date.now().toString(),
           title,
           description,
           tags,

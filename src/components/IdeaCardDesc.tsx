@@ -1,9 +1,15 @@
 import { postDelete } from '@/api/jsonFetch'
-import type { Idea } from '@/types'
+import type { Idea, UserCredentials } from '@/types'
 import { useMutation } from '@tanstack/react-query'
 import { Link, useNavigate } from '@tanstack/react-router'
 
-const IdeaCardDesc = ({ idea }: { idea: Idea }) => {
+const IdeaCardDesc = ({
+  idea,
+  user,
+}: {
+  idea: Idea
+  user: UserCredentials | null
+}) => {
   const navigate = useNavigate()
   const { mutateAsync } = useMutation({
     mutationFn: postDelete,
@@ -66,24 +72,26 @@ const IdeaCardDesc = ({ idea }: { idea: Idea }) => {
             </div>
           </div>
         </div>
-        <div className='flex gap-3 mt-6'>
-          <Link
-            to='/ideas/$ideaId/edit'
-            params={{ ideaId: idea._id.toString() }}
-            className='bg-amber-600 hover:bg-amber-700 text-white font-semibold px-6 py-2 rounded transition-colors duration-200'
-          >
-            Edit Idea
-          </Link>
-          <button
-            onClick={(e) => {
-              e.stopPropagation()
-              handleDelete(idea._id)
-            }}
-            className='bg-red-600 hover:bg-red-700 text-white font-semibold px-6 py-2 rounded transition-colors duration-200'
-          >
-            Delete
-          </button>
-        </div>
+        {user && user.id === idea.user && (
+          <div className='flex gap-3 mt-6'>
+            <Link
+              to='/ideas/$ideaId/edit'
+              params={{ ideaId: idea._id.toString() }}
+              className='bg-amber-600 hover:bg-amber-700 text-white font-semibold px-6 py-2 rounded transition-colors duration-200'
+            >
+              Edit Idea
+            </Link>
+            <button
+              onClick={(e) => {
+                e.stopPropagation()
+                handleDelete(idea._id)
+              }}
+              className='bg-red-600 hover:bg-red-700 text-white font-semibold px-6 py-2 rounded transition-colors duration-200'
+            >
+              Delete
+            </button>
+          </div>
+        )}
       </div>
     </div>
   )

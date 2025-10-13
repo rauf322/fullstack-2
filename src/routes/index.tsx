@@ -3,6 +3,7 @@ import { Link, createFileRoute } from '@tanstack/react-router'
 import type { Idea } from '@/types'
 import { useQueryIdeas } from '@/api/useQueryHelper'
 import IdeaCard from '@/components/IdeaCard'
+import { useAuth } from '@/context/AuthContext'
 
 export const Route = createFileRoute('/')({
   component: HomePage,
@@ -13,6 +14,7 @@ export const Route = createFileRoute('/')({
 
 function HomePage() {
   const { data: ideas } = useSuspenseQuery(useQueryIdeas(3))
+  const { user } = useAuth()
   return (
     <div className='min-h-screen bg-stone-950'>
       <div className='max-w-7xl mx-auto px-6 py-20'>
@@ -31,11 +33,13 @@ function HomePage() {
             >
               Browse Ideas
             </Link>
-            <Link to='/new'>
-              <button className='bg-stone-800 hover:bg-stone-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors border border-stone-700'>
-                Get Started
-              </button>
-            </Link>
+            {user && (
+              <Link to='/new'>
+                <button className='bg-stone-800 hover:bg-stone-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors border border-stone-700'>
+                  Get Started
+                </button>
+              </Link>
+            )}
           </div>
         </div>
         {ideas.length > 0 && (

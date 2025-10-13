@@ -13,7 +13,6 @@ export const Route = createFileRoute('/ideas/$ideaId/edit/')({
 function RouteComponent() {
   const { ideaId } = Route.useParams()
   const { data: idea } = useSuspenseQuery(useQueryIdea(ideaId))
-  console.log(idea)
   return (
     <div className='bg-stone-950 min-h-screen p-8'>
       <div className='max-w-2xl mx-auto'>

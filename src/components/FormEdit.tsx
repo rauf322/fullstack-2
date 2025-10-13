@@ -22,8 +22,8 @@ const FormCreate = ({ idea }: { idea: Idea }) => {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     const _id = idea._id
-    const createdAt = idea.createdAt
-    await mutateAsync({ _id, title, tags, description, createdAt })
+    const updatedAt = new Date().toISOString()
+    await mutateAsync({ _id, title, tags, description, updatedAt })
   }
   return (
     <form onSubmit={handleSubmit} className='space-y-6'>

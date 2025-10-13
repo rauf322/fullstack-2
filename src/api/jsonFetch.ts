@@ -14,11 +14,10 @@ export async function fetchIdeas(_limit?: number): Promise<Array<Idea>> {
 }
 
 export async function postIdea(
-  newIdea: Omit<Idea, 'createdAt' | 'id'>,
+  newIdea: Pick<Idea, 'title' | 'description' | 'tags'>,
 ): Promise<Idea> {
   const res = await api.post('/ideas', {
     ...newIdea,
-    createdAt: new Date().toISOString(),
   })
   return res.data
 }
@@ -27,7 +26,9 @@ export async function postDelete(postId: string): Promise<void> {
   await api.delete(`/ideas/${postId}`)
 }
 
-export async function putIdeas(updatedData: Idea): Promise<Idea> {
+export async function putIdeas(
+  updatedData: Omit<Idea, 'user' | 'createdAt'>,
+): Promise<Idea> {
   console.log(updatedData)
   const res = await api.put(`ideas/${updatedData._id}`, updatedData)
   return res.data
