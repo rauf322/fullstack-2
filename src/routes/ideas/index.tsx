@@ -25,13 +25,13 @@ function Ideas() {
     }
   })
   return (
-    <div className="bg-stone-950 min-h-screen p-4 sm:p-8">
-      <div className="max-w-6xl mx-auto">
-        <h1 className="text-3xl sm:text-4xl font-bold text-white mb-6 sm:mb-8">
+    <div className='bg-stone-950 min-h-screen p-4 sm:p-8'>
+      <div className='max-w-6xl mx-auto'>
+        <h1 className='text-3xl sm:text-4xl font-bold text-white mb-6 sm:mb-8'>
           Shop Ideas
         </h1>
         <Filter ideas={ideas} setFilter={setFilter} />
-        <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-6">
+        <div className='grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-6'>
           {filteredIdeas.map((idea) => (
             <IdeaCard key={idea._id} idea={idea} user={user} />
           ))}

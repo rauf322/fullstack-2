@@ -34,13 +34,13 @@ export const Route = createRootRouteWithContext<RouterContext>()({
     </div>
   ),
   notFoundComponent: () => (
-    <div className="min-h-screen bg-stone-950 flex items-center justify-center">
-      <div className="text-center">
-        <h1 className="text-9xl font-bold text-white mb-4">404</h1>
-        <p className="text-2xl text-stone-400 mb-8">Page Not Found</p>
+    <div className='min-h-screen bg-stone-950 flex items-center justify-center'>
+      <div className='text-center'>
+        <h1 className='text-9xl font-bold text-white mb-4'>404</h1>
+        <p className='text-2xl text-stone-400 mb-8'>Page Not Found</p>
         <a
-          href="/"
-          className="bg-amber-700 hover:bg-amber-800 text-white font-semibold px-6 py-3 rounded-lg transition-colors inline-block"
+          href='/'
+          className='bg-amber-700 hover:bg-amber-800 text-white font-semibold px-6 py-3 rounded-lg transition-colors inline-block'
         >
           Go Home
         </a>

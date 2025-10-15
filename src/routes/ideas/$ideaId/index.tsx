@@ -16,7 +16,7 @@ function IdeaDetails() {
   const { data: idea } = useSuspenseQuery(useQueryIdea(ideaId))
   const { user } = useAuth()
   return (
-    <div className="bg-stone-950 min-h-screen p-4 sm:p-8">
+    <div className='bg-stone-950 min-h-screen p-4 sm:p-8'>
       <IdeaCardDesc idea={idea} user={user} />
     </div>
   )
