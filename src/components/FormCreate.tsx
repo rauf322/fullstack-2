@@ -70,6 +70,7 @@ const FormCreate = () => {
         </label>
         <input
           id='title'
+          data-testid='input-title'
           type='text'
           value={title}
           onChange={(e) => setTitle(e.target.value)}
@@ -88,6 +89,7 @@ const FormCreate = () => {
         <textarea
           id='description'
           value={description}
+          data-testid='input-textarea'
           onChange={(e) => setDescription(e.target.value)}
           rows={5}
           className='w-full bg-stone-800 text-white border border-stone-700 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-colors resize-none'
@@ -105,16 +107,17 @@ const FormCreate = () => {
         <input
           id='tags'
           type='text'
-          value={tags.join(' ')}
+          data-testid='input-tags'
+          value={tags.join(',')}
           onChange={(e) => {
-            const arrTags: Array<string> = e.target.value.split(' ')
+            const arrTags: Array<string> = e.target.value.split(',')
             setTags(arrTags)
           }}
           className='w-full bg-stone-800 text-white border border-stone-700 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-colors'
           placeholder='Enter tags separated by comma (,)'
         />
         <p className='text-stone-500 text-sm mt-2'>
-          Separate tags with comma (e.g., Technology E-commerce Creative)
+          Separate tags with comma (e.g., Technology,E-commerce,Creative)
         </p>
       </div>
 
