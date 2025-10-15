@@ -5,5 +5,4 @@ declare global {
     __TANSTACK_QUERY_CLIENT__: QueryClient
   }
 }
-
 export {}
