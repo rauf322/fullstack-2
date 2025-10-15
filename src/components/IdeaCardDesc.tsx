@@ -29,7 +29,10 @@ const IdeaCardDesc = ({
   return (
     <div className='max-w-4xl mx-auto px-4'>
       <div className='bg-stone-800 rounded-lg shadow-md p-4 sm:p-6 border border-stone-700'>
-        <h1 className='text-2xl sm:text-3xl font-bold text-white mb-4'>
+        <h1
+          className='text-2xl sm:text-3xl font-bold text-white mb-4'
+          data-testid='idea-title'
+        >
           {idea.title}
         </h1>
 
