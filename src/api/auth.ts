@@ -1,4 +1,4 @@
-import type { AuthContextType, User } from '@/types'
+import type { AuthContextType, User, UserCredentials } from '@/types'
 import api from '@/lib/axios'
 
 export async function postUser(newUser: User): Promise<AuthContextType> {
@@ -32,7 +32,10 @@ export async function logoutUser(): Promise<void> {
   }
 }
 
-export async function refreshToken() {
+export async function refreshToken(): Promise<{
+  user: UserCredentials
+  accessToken: string
+}> {
   try {
     const res = await api.post('/auth/refresh')
     return res.data

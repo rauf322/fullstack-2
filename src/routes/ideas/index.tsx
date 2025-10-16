@@ -1,6 +1,7 @@
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { createFileRoute } from '@tanstack/react-router'
 import { useState } from 'react'
+import { Lightbulb } from 'lucide-react'
 import type { Idea } from '@/types'
 import IdeaCard from '@/components/IdeaCard'
 import { useQueryIdeas } from '@/api/useQueryHelper'
@@ -14,7 +15,7 @@ export const Route = createFileRoute('/ideas/')({
   },
 })
 
-function Ideas() {
+export function Ideas() {
   const { data: ideas } = useSuspenseQuery(useQueryIdeas())
   const [filter, setFilter] = useState('All Categories')
 
@@ -27,7 +28,8 @@ function Ideas() {
   return (
     <div className='bg-stone-950 min-h-screen p-4 sm:p-8'>
       <div className='max-w-6xl mx-auto'>
-        <h1 className='text-3xl sm:text-4xl font-bold text-white mb-6 sm:mb-8'>
+        <h1 className='text-3xl sm:text-4xl font-bold text-white mb-6 sm:mb-8 flex items-center gap-3'>
+          <Lightbulb className='text-amber-500' size={36} strokeWidth={2.5} />
           Shop Ideas
         </h1>
         <Filter ideas={ideas} setFilter={setFilter} />

@@ -2,6 +2,7 @@ import { logoutUser } from '@/api/auth'
 import { useAuth } from '@/context/AuthContext'
 import { Link, useNavigate } from '@tanstack/react-router'
 import { toast } from 'sonner'
+import { Lightbulb } from 'lucide-react'
 
 export default function Header() {
   const { accessToken, user, setAccessToken, setUser } = useAuth()
@@ -22,21 +23,33 @@ export default function Header() {
               to='/'
               className='text-xl sm:text-2xl font-bold hover:text-amber-500 transition-colors'
             >
-              Shop Ideas
+              <Lightbulb
+                className='text-amber-500'
+                size={28}
+                strokeWidth={2.5}
+              />
             </Link>
-            <div className='hidden sm:flex gap-6'>
+            <div className='flex gap-6'>
               <Link
                 to='/'
-                className='text-stone-400 hover:text-white transition-colors font-medium'
+                className='text-stone-400 hover:text-white transition-colors font-medium hidden sm:inline'
               >
                 Home
               </Link>
               <Link
                 to='/ideas'
-                className='text-stone-400 hover:text-white transition-colors font-medium'
+                className='text-stone-400 hover:text-white transition-colors font-medium hidden sm:inline'
               >
                 Ideas
               </Link>
+              {user && (
+                <Link
+                  to='/new'
+                  className='text-stone-400 hover:text-white transition-colors font-medium'
+                >
+                  New Idea
+                </Link>
+              )}
             </div>
           </div>
           {!accessToken && !user ? (
