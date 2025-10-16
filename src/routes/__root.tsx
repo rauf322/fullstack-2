@@ -30,7 +30,7 @@ export const Route = createRootRouteWithContext<RouterContext>()({
       <Header />
       <HeadContent />
       <Outlet />
-      <TanstackDevtools />
+      {import.meta.env.DEV && <TanstackDevtools />}
     </div>
   ),
   notFoundComponent: () => (
