@@ -1,5 +1,4 @@
 import { render } from '@testing-library/react'
-import { expect, test, vi } from 'vitest'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import IdeasCardDesc from '@/components/IdeaCardDesc'
 import type { Idea, UserCredentials } from '@/types'

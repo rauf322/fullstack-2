@@ -1,7 +1,6 @@
 import Header from '@/components/Header'
 import { AuthProvider } from '@/context/AuthContext'
 import { fireEvent, render, screen } from '@testing-library/react'
-import { expect, test, vi } from 'vitest'
 
 test('check if header is correct', async () => {
   vi.mock('@tanstack/react-router', () => ({

@@ -1,7 +1,6 @@
 import { AuthProvider } from '@/context/AuthContext'
 import { Ideas } from '@/routes/ideas'
 import { render } from '@testing-library/react'
-import { expect, test, vi } from 'vitest'
 
 vi.mock('@tanstack/react-query', () => ({
   useSuspenseQuery: vi.fn(() => ({

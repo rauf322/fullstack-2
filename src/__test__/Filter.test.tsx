@@ -1,8 +1,7 @@
-import { render, screen, fireEvent } from '@testing-library/react'
-import { expect, test, vi } from 'vitest'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import Filter from '@/components/Filter'
 import type { Idea } from '@/types'
+import { render, screen, fireEvent } from '@testing-library/react'
 
 test('check filter renders all unique tags', async () => {
   const queryClient = new QueryClient()
