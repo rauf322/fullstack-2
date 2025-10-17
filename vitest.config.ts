@@ -7,6 +7,7 @@ export default defineConfig({
   resolve: {
     alias: {
       ...configuration.resolve?.alias,
+      test: path.resolve(__dirname, './src/__test__/'),
     },
   },
   test: {
